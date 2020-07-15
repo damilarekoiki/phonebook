@@ -19,6 +19,10 @@
     });
     Route::get("/{page}", function($page){
         return view("phonebook");
-    })
+    });
+
+    Route::resource('phonebook_save', 'PhonebookController');
+    Route::post('fetchUserPhonebook', 'PhonebookController@fetchUserPhonebook');
+    Route::post('fetchPhonebookDetails', 'PhonebookController@fetchPhonebookDetails');
 
 ?>
