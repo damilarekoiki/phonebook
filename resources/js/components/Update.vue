@@ -6,7 +6,9 @@
 
             <header class="modal-card-head">
                 <p class="modal-card-title">
-                    <span v-if="list.friend_name">Update {{ list.friend_name | uppercase }}'s Details</span>
+                    <span v-if="fetching">{{ fetchingText }}</span>
+                    <span v-if="updating">{{ updatingText }}</span>
+                    <span v-if="list.friend_name && !updating">Update {{ list.friend_name | uppercase }}'s Details</span>
                 </p>
                 <button class="delete" aria-label="close" @click="close"></button>
             </header>
@@ -65,7 +67,11 @@ export default {
             },
             phonebookDetails:{
                 id:''
-            }
+            },
+            fetching: true,
+            fetchingText: 'Trying to fetch data...',
+            updating: false,
+            updatingText: "Updating User"
 
         }
     },
@@ -74,27 +80,52 @@ export default {
     ],
     methods:{
         close(){
+            this.fetching=true;
+            this.fetchingText= 'Trying to fetch data...';
+            this.updating=false;
+            this.updatingText= "Updating..."
             this.$emit("closeUpdate")
+            this.list={} // Empty all the fields, work of v-model
+
         },
         update(){
+            
+            this.updating=true;
+            this.$Progress.start()
             axios.patch(`/phonebook_save/${this.list.id}`,this.list).then((response)=>{
-                console.log(response.data);
+
+                this.updating=false;
                 this.close();
+                this.$Progress.finish();
+                this.list={} // Empty all the fields, work of v-model
+
             }).catch((error)=>{
+
+                this.updating=true;
+                this.updatingText="Error updating"
                 this.errors = error.response.data.errors;
+                this.$Progress.finish();
+
             })
+            
+
         },
         fetchPhonebookDetails(phonebookId){
+
+            this.$Progress.start()
 
             this.phonebookDetails.id=phonebookId;
 
             axios.post("/fetchPhonebookDetails", this.phonebookDetails).then((response) => {
 
+                this.fetching = false
                 this.list = response.data[0];
-                console.log(this.list);
+
+                this.$Progress.finish()
 
             }).catch((error) => {
-
+                this.$Progress.finish();
+                this.fetchingText="Error trying to fetch data"
             });
             console.log(this.modalClass);
         }

@@ -48,36 +48,47 @@
 </template>
 
 <script>
-export default {
-    data(){
-        return {
-            list:{
-                friend_name: '',
-                friend_phone_number: '',
-                friend_email: ''
-            },
-            errors:{
-                friend_name: '',
-                friend_phone_number: '',
-                friend_email: '',
-            }
 
-        }
-    },
-    props:[
-        "modalActiveClass"
-    ],
-    methods:{
-        close(){
-            this.$emit("closeRequest")
+    export default {
+        data(){
+            return {
+                list:{
+                    friend_name: '',
+                    friend_phone_number: '',
+                    friend_email: ''
+                },
+                errors:{
+                    friend_name: '',
+                    friend_phone_number: '',
+                    friend_email: '',
+                }
+
+            }
         },
-        save(){
-            axios.post("/phonebook_save",this.list).then((response)=>{
-                this.close();
-            }).catch((error)=>{
-                this.errors = error.response.data.errors;
-            })
+        props:[
+            "modalActiveClass"
+        ],
+        methods:{
+            close(){
+                this.$emit("closeRequest");
+                this.list={} // Empty all the fields, work of v-model
+            },
+            save(){
+
+                this.$Progress.start() //  Loader progress bar
+                axios.post("/phonebook_save", this.list).then((response)=>{
+                    this.$parent.list = response.data; // Push new list to Home list
+                    this.$parent.tempList=response.data; // save original list. Display it when nothng is in search box
+                    this.$Progress.finish() //  Loader progress bar
+                    this.close();
+                }).catch((error)=>{
+                    this.$Progress.fail() //  Loader progress bar
+                    this.errors = error.response.data.errors;
+                });
+
+                this.list={} // Empty all the fields, work of v-model 
+
+            }
         }
     }
-}
 </script>

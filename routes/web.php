@@ -17,12 +17,17 @@
     Route::get("/", function(){
         return view("phonebook");
     });
-    Route::get("/{page}", function($page){
-        return view("phonebook");
-    });
+    // Route::get("/{page}", function($page){
+    //     return view("phonebook");
+    // });
+    // Route::get('/{any?}', function (){
+    //     return view('phonebook');
+    //     })->where('any', '^(?!api\/)[\/\w\.-]*');
 
-    Route::resource('phonebook_save', 'PhonebookController');
-    Route::post('fetchUserPhonebook', 'PhonebookController@fetchUserPhonebook');
-    Route::post('fetchPhonebookDetails', 'PhonebookController@fetchPhonebookDetails');
+    
+
+    Route::get('/{any}', function () {
+        return view('phonebook');
+    })->where('any','.*');
 
 ?>

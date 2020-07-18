@@ -1,5 +1,5 @@
 <template>
-    <footer class="footer">
+    <footer class="footer" v-if="!loading">
         <div class="content has-text-centered">
             <p>
                 <strong>Vuejs PhoneBook App</strong> by <a href="https://github.com/koiki13">Damilare Koiki</a>. Access the source code
@@ -13,3 +13,9 @@
         </div>
     </footer>
 </template>
+
+<script>
+export default {
+    props:["loading"]
+}
+</script>

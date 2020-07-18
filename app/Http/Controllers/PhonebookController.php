@@ -21,7 +21,7 @@ class PhonebookController extends Controller
     public function fetchUserPhonebook()
     {
         # code...
-        return Phonebook::orderBy('friend_name', 'DESC')->get();
+        return Phonebook::orderBy('friend_name', 'ASC')->get();
     }
 
     public function fetchPhonebookDetails(Request $request)
@@ -29,6 +29,20 @@ class PhonebookController extends Controller
         # code...
         return Phonebook::Where('id', $request->id)->get();
         
+    }
+
+    public function search(Request $request)
+    {
+        # code...
+        // return $request;
+        $search=$request->search;
+
+        return Phonebook::query()
+        ->where('friend_name', 'LIKE', "%{$search}%") 
+        ->orWhere('friend_phone_number', 'LIKE', "%{$search}%") 
+        ->orWhere('friend_email', 'LIKE', "%{$search}%")
+        ->orderBy('friend_name', 'ASC')
+        ->get();
     }
 
     /**
@@ -58,6 +72,8 @@ class PhonebookController extends Controller
         $phonebook->friend_email = $request->friend_email;
         
         $phonebook->save();
+
+        return $this->fetchUserPhonebook();
     }
 
     /**
@@ -105,8 +121,9 @@ class PhonebookController extends Controller
      * @param  \App\Phonebook  $phonebook
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Phonebook $phonebook)
+    public function destroy($phonebookId)
     {
         //
+        Phonebook::where("id",$phonebookId)->delete();
     }
 }

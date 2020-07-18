@@ -56,14 +56,17 @@ export default {
         },
         fetchPhonebookDetails(phonebookId){
 
+            this.$Progress.start()
+
             this.phonebookDetails.id=phonebookId;
 
             axios.post("/fetchPhonebookDetails", this.phonebookDetails).then((response) => {
 
                 this.list = response.data[0];
+                this.$Progress.finish()
 
             }).catch((error) => {
-
+                this.$Progress.finish()
             })
         }
     },
