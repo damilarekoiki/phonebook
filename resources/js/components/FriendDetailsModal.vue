@@ -27,8 +27,7 @@
             </section>
 
             <footer class="modal-card-foot">
-                <button class="button is-success">Save changes</button>
-                <button class="button" @click="closeModal">Cancel</button>
+                <button class="button is-success" @click="closeModal">Close</button>
             </footer>
 
         </div>
@@ -52,6 +51,7 @@ export default {
     methods:{
 
         closeModal(){
+            this.list={}
             this.$emit("closeFriend")
         },
         fetchPhonebookDetails(phonebookId){

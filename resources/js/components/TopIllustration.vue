@@ -13,7 +13,7 @@
                             Bond forever
                         </h1>
                         <h2 class="subtitle">
-                            Stay connected with loved ones, never lose their data
+                            Stay connected with loved ones on our <b>phonebook</b> app, never lose their data
                         </h2>
                     </div>
                 </div>

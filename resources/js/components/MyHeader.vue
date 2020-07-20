@@ -4,7 +4,7 @@
         <div class="navbar-brand">
 
             <router-link :to="{name: 'home'}" class="navbar-item">
-                <img :src="'./assets/image/phonebook.png'" alt="PhoneBook">
+                <img :src="'./assets/image/phonebook3.jpg'" alt="PhoneBook">
             </router-link>
             
             <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">

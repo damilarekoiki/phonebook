@@ -43,7 +43,7 @@
 
         </a>
 
-        <Add :modalActiveClass="activeClass" @closeRequest="closeModal" />
+        <Add :modalActiveClass="activeClass" @closeRequest="closeModal" ref="addModal"/>
         <FriendDetailsModal :modalClass="friendModalClass" @closeFriend="closeFriendModal"  ref="friendModal" />
         <UpdateFriendModal :modalClass="updateModalClass" @closeUpdate="closeUpdateModal" ref="updateModal" />
 
@@ -132,12 +132,16 @@
         },
         methods: {
             showModal(){
+                this.$refs["addModal"].list={}
+                this.$refs["addModal"].errors={}
                 this.activeClass='is-active'
             },
             closeModal(){
                 this.activeClass=''
             },
             displayFriendDetails(id){
+
+                this.$refs["friendModal"].list={}
 
                 this.$refs["friendModal"].fetchPhonebookDetails(id) // Call function fetchPhonebookDetail
                 this.friendModalClass='is-active'
@@ -148,6 +152,8 @@
             },
             displayFriendDetailsInUpdateModal(id){
 
+                this.$refs["updateModal"].list={};
+                this.$refs["updateModal"].errors={}
                 this.$refs["updateModal"].fetchPhonebookDetails(id) // Call function fetchPhonebookDetail
                 this.updateModalClass='is-active'
 

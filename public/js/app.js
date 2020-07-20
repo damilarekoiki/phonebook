@@ -2994,6 +2994,8 @@ __webpack_require__.r(__webpack_exports__);
     close: function close() {
       this.$emit("closeRequest");
       this.list = {}; // Empty all the fields, work of v-model
+
+      this.errors = {};
     },
     save: function save() {
       var _this = this;
@@ -3151,7 +3153,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3164,6 +3165,7 @@ __webpack_require__.r(__webpack_exports__);
   props: ["modalClass"],
   methods: {
     closeModal: function closeModal() {
+      this.list = {};
       this.$emit("closeFriend");
     },
     fetchPhonebookDetails: function fetchPhonebookDetails(phonebookId) {
@@ -3335,12 +3337,15 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     showModal: function showModal() {
+      this.$refs["addModal"].list = {};
+      this.$refs["addModal"].errors = {};
       this.activeClass = 'is-active';
     },
     closeModal: function closeModal() {
       this.activeClass = '';
     },
     displayFriendDetails: function displayFriendDetails(id) {
+      this.$refs["friendModal"].list = {};
       this.$refs["friendModal"].fetchPhonebookDetails(id); // Call function fetchPhonebookDetail
 
       this.friendModalClass = 'is-active';
@@ -3349,6 +3354,8 @@ __webpack_require__.r(__webpack_exports__);
       this.friendModalClass = '';
     },
     displayFriendDetailsInUpdateModal: function displayFriendDetailsInUpdateModal(id) {
+      this.$refs["updateModal"].list = {};
+      this.$refs["updateModal"].errors = {};
       this.$refs["updateModal"].fetchPhonebookDetails(id); // Call function fetchPhonebookDetail
 
       this.updateModalClass = 'is-active';
@@ -3947,6 +3954,8 @@ __webpack_require__.r(__webpack_exports__);
       this.updatingText = "Updating...";
       this.$emit("closeUpdate");
       this.list = {}; // Empty all the fields, work of v-model
+
+      this.errors = {};
     },
     update: function update() {
       var _this = this;
@@ -34875,8 +34884,10 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("h2", { staticClass: "subtitle" }, [
               _vm._v(
-                "\n                        The whole world is a family. Login now and start adding loved ones to phonebook\n                    "
-              )
+                "\n                        The whole world is a family. Login now and start adding loved ones to "
+              ),
+              _c("b", [_vm._v("phonebook")]),
+              _vm._v(".\n                    ")
             ])
           ])
         ])
@@ -34940,13 +34951,11 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("footer", { staticClass: "modal-card-foot" }, [
-        _c("button", { staticClass: "button is-success" }, [
-          _vm._v("Save changes")
-        ]),
-        _vm._v(" "),
-        _c("button", { staticClass: "button", on: { click: _vm.closeModal } }, [
-          _vm._v("Cancel")
-        ])
+        _c(
+          "button",
+          { staticClass: "button is-success", on: { click: _vm.closeModal } },
+          [_vm._v("Close")]
+        )
       ])
     ])
   ])
@@ -35120,6 +35129,7 @@ var render = function() {
       }),
       _vm._v(" "),
       _c("Add", {
+        ref: "addModal",
         attrs: { modalActiveClass: _vm.activeClass },
         on: { closeRequest: _vm.closeModal }
       }),
@@ -35469,8 +35479,10 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("h2", { staticClass: "subtitle" }, [
               _vm._v(
-                "\n                        Experience the joy of family tights. Stay in touch with their phone numbers and emails.\n                    "
-              )
+                "\n                        Experience the joy of family tights. Stay in touch with their phone numbers and emails on our "
+              ),
+              _c("b", [_vm._v("phonebook")]),
+              _vm._v(" app.\n                    ")
             ])
           ])
         ])
@@ -35572,7 +35584,10 @@ var render = function() {
             { staticClass: "navbar-item", attrs: { to: { name: "home" } } },
             [
               _c("img", {
-                attrs: { src: "./assets/image/phonebook.png", alt: "PhoneBook" }
+                attrs: {
+                  src: "./assets/image/phonebook3.jpg",
+                  alt: "PhoneBook"
+                }
               })
             ]
           ),
@@ -36285,8 +36300,10 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("h2", { staticClass: "subtitle" }, [
               _vm._v(
-                "\n                        Stay connected with loved ones, never lose their data\n                    "
-              )
+                "\n                        Stay connected with loved ones on our "
+              ),
+              _c("b", [_vm._v("phonebook")]),
+              _vm._v(" app, never lose their data\n                    ")
             ])
           ])
         ])

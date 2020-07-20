@@ -15,7 +15,7 @@
                             There is room for you
                         </h1>
                         <h2 class="subtitle">
-                            The whole world is a family. Login now and start adding loved ones to phonebook
+                            The whole world is a family. Login now and start adding loved ones to <b>phonebook</b>.
                         </h2>
                     </div>
                 </div>

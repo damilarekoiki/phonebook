@@ -72,6 +72,7 @@
             close(){
                 this.$emit("closeRequest");
                 this.list={} // Empty all the fields, work of v-model
+                this.errors={}
             },
             save(){
 

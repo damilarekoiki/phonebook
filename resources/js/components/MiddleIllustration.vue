@@ -8,7 +8,7 @@
                             Happy People
                         </h1>
                         <h2 class="subtitle">
-                            Experience the joy of family tights. Stay in touch with their phone numbers and emails.
+                            Experience the joy of family tights. Stay in touch with their phone numbers and emails on our <b>phonebook</b> app.
                         </h2>
                     </div>
                 </div>

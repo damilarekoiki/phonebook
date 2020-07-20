@@ -86,6 +86,7 @@ export default {
             this.updatingText= "Updating..."
             this.$emit("closeUpdate")
             this.list={} // Empty all the fields, work of v-model
+            this.errors={}
 
         },
         update(){
