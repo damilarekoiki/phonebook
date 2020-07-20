@@ -2878,6 +2878,44 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/About.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/About.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  mounted: function mounted() {
+    this.$emit('dataStiilBeingFetched', false);
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Add.vue?vue&type=script&lang=js&":
 /*!**************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Add.vue?vue&type=script&lang=js& ***!
@@ -2971,13 +3009,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
         _this.close();
+
+        _this.list = {}; // Empty all the fields, work of v-model
       })["catch"](function (error) {
         _this.$Progress.fail(); //  Loader progress bar
 
 
         _this.errors = error.response.data.errors;
       });
-      this.list = {}; // Empty all the fields, work of v-model 
     }
   }
 });
@@ -3283,9 +3322,15 @@ __webpack_require__.r(__webpack_exports__);
 
       _this2.stillFetchingPhonebook = false;
 
-      _this2.$emit('dataStiilBeingFetched', false);
+      _this2.$emit('dataStiilBeingFetched', false); // To control when footer will be displayed
+
     })["catch"](function (error) {
+      console.log(error);
       _this2.errors = error.response.data.errors;
+      _this2.stillFetchingPhonebook = false;
+
+      _this2.$emit('dataStiilBeingFetched', false); // To control when footer will be displayed
+
     });
   },
   methods: {
@@ -3351,6 +3396,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _TopIllustration__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TopIllustration */ "./resources/js/components/TopIllustration.vue");
 /* harmony import */ var _MiddleIllustration__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MiddleIllustration */ "./resources/js/components/MiddleIllustration.vue");
 /* harmony import */ var _BottomIllustration__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./BottomIllustration */ "./resources/js/components/BottomIllustration.vue");
+//
+//
 //
 //
 //
@@ -3616,6 +3663,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _TopIllustration__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TopIllustration */ "./resources/js/components/TopIllustration.vue");
 /* harmony import */ var _MiddleIllustration__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MiddleIllustration */ "./resources/js/components/MiddleIllustration.vue");
 /* harmony import */ var _BottomIllustration__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./BottomIllustration */ "./resources/js/components/BottomIllustration.vue");
+//
 //
 //
 //
@@ -4019,7 +4067,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.router-link-active[data-v-a4c8a778]{\n    color: #3273dc\n}\n.navbar[data-v-a4c8a778]{\n    /* background: grey; */\n}\n", ""]);
+exports.push([module.i, "\n.router-link-active[data-v-a4c8a778]{\n    color: #3273dc\n}\n.pages-links[data-v-a4c8a778]{\n    color:white\n}\n.navbar-link[data-v-a4c8a778]:hover{\n    color: #3273dc\n}\n.site-header[data-v-a4c8a778]{\n    background: #3273dc;\n}\n\n", ""]);
 
 // exports
 
@@ -34537,23 +34585,41 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("section", { staticClass: "section" }, [
+    _c("div", { staticClass: "container columns" }, [
+      _c("div", { staticClass: "card is-offset-3 is-4 column" }, [
+        _c("div", { staticClass: "card-image" }, [
+          _c("figure", { staticClass: "image" }, [
+            _c("img", {
+              staticStyle: { width: "100%" },
+              attrs: {
+                src: "./assets/image/dammy.jpg",
+                alt: "Placeholder image"
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _vm._m(0)
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "section" }, [
-      _c("div", { staticClass: "container" }, [
-        _c("h1", { staticClass: "title" }, [_vm._v("Section")]),
-        _vm._v(" "),
-        _c("h2", { staticClass: "subtitle" }, [
-          _vm._v("\n            A simple container to divide your page into "),
-          _c("strong", [_vm._v("sections")]),
-          _vm._v(", like the one you're currently reading\n        ")
-        ])
-      ])
+    return _c("div", { staticClass: "card-content" }, [
+      _c(
+        "div",
+        { staticClass: "content", staticStyle: { "text-align": "justify" } },
+        [
+          _vm._v(
+            "\n                    Hi! My name is Damilare Koiki. I'm a full-stack developer. \n                    I built this site with Laravel and Vue.js\n                "
+          )
+        ]
+      )
     ])
   }
 ]
@@ -35117,200 +35183,203 @@ var render = function() {
         ),
         _vm._v(" "),
         _c("section", { staticClass: "section column is-5" }, [
-          _c("div", { staticClass: "container" }, [
-            _vm.has_error
-              ? _c("div", { staticClass: "notification is-danger" }, [
-                  _c("p", [
-                    _vm._v(
-                      "\n                        Error, unable to connect with these credentials\n                    "
-                    )
+          _c("div", { staticClass: "container card" }, [
+            _c("div", { staticClass: "card-content" }, [
+              _vm.has_error
+                ? _c("div", { staticClass: "notification is-danger" }, [
+                    _c("p", [
+                      _vm._v(
+                        "\n                            Error, unable to connect with these credentials\n                        "
+                      )
+                    ])
                   ])
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _c(
-              "form",
-              {
-                attrs: { autocomplete: "off", method: "post" },
-                on: {
-                  submit: function($event) {
-                    $event.preventDefault()
-                    return _vm.login($event)
+                : _vm._e(),
+              _vm._v(" "),
+              _c(
+                "form",
+                {
+                  attrs: { autocomplete: "off", method: "post" },
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.login($event)
+                    }
                   }
-                }
-              },
-              [
-                _c("div", { staticClass: "field" }, [
-                  _c("div", { staticClass: "columns" }, [
-                    _c("div", { staticClass: "column is-10" }, [
-                      _c("div", { staticClass: "control has-icons-left" }, [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.email,
-                              expression: "email"
-                            }
-                          ],
-                          staticClass: "input",
-                          class: { "is-danger": _vm.errors.email },
-                          attrs: { type: "email", placeholder: "Email" },
-                          domProps: { value: _vm.email },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
+                },
+                [
+                  _c("div", { staticClass: "field" }, [
+                    _c("div", { staticClass: "columns" }, [
+                      _c("div", { staticClass: "column is-10" }, [
+                        _c("div", { staticClass: "control has-icons-left" }, [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.email,
+                                expression: "email"
                               }
-                              _vm.email = $event.target.value
+                            ],
+                            staticClass: "input",
+                            class: { "is-danger": _vm.errors.email },
+                            attrs: { type: "email", placeholder: "Email" },
+                            domProps: { value: _vm.email },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.email = $event.target.value
+                              }
                             }
-                          }
-                        }),
+                          }),
+                          _vm._v(" "),
+                          _vm._m(0),
+                          _vm._v(" "),
+                          _vm.has_error && _vm.errors.email
+                            ? _c("p", { staticClass: "help is-danger" }, [
+                                _vm._v(_vm._s(_vm.errors.email))
+                              ])
+                            : _vm._e()
+                        ])
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "field" }, [
+                    _c("div", { staticClass: "columns" }, [
+                      _c("div", { staticClass: "column is-10" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "control has-icons-left has-icons-right"
+                          },
+                          [
+                            _vm.passwordOrText === "checkbox"
+                              ? _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.password,
+                                      expression: "password"
+                                    }
+                                  ],
+                                  staticClass: "input",
+                                  class: { "is-danger": _vm.errors.password },
+                                  attrs: {
+                                    placeholder: "Password",
+                                    type: "checkbox"
+                                  },
+                                  domProps: {
+                                    checked: Array.isArray(_vm.password)
+                                      ? _vm._i(_vm.password, null) > -1
+                                      : _vm.password
+                                  },
+                                  on: {
+                                    change: function($event) {
+                                      var $$a = _vm.password,
+                                        $$el = $event.target,
+                                        $$c = $$el.checked ? true : false
+                                      if (Array.isArray($$a)) {
+                                        var $$v = null,
+                                          $$i = _vm._i($$a, $$v)
+                                        if ($$el.checked) {
+                                          $$i < 0 &&
+                                            (_vm.password = $$a.concat([$$v]))
+                                        } else {
+                                          $$i > -1 &&
+                                            (_vm.password = $$a
+                                              .slice(0, $$i)
+                                              .concat($$a.slice($$i + 1)))
+                                        }
+                                      } else {
+                                        _vm.password = $$c
+                                      }
+                                    }
+                                  }
+                                })
+                              : _vm.passwordOrText === "radio"
+                              ? _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.password,
+                                      expression: "password"
+                                    }
+                                  ],
+                                  staticClass: "input",
+                                  class: { "is-danger": _vm.errors.password },
+                                  attrs: {
+                                    placeholder: "Password",
+                                    type: "radio"
+                                  },
+                                  domProps: {
+                                    checked: _vm._q(_vm.password, null)
+                                  },
+                                  on: {
+                                    change: function($event) {
+                                      _vm.password = null
+                                    }
+                                  }
+                                })
+                              : _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.password,
+                                      expression: "password"
+                                    }
+                                  ],
+                                  staticClass: "input",
+                                  class: { "is-danger": _vm.errors.password },
+                                  attrs: {
+                                    placeholder: "Password",
+                                    type: _vm.passwordOrText
+                                  },
+                                  domProps: { value: _vm.password },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.password = $event.target.value
+                                    }
+                                  }
+                                }),
+                            _vm._v(" "),
+                            _vm._m(1),
+                            _vm._v(" "),
+                            _c(
+                              "span",
+                              { staticClass: "icon is-small is-right" },
+                              [
+                                _c("i", {
+                                  staticClass: "fa show-pass",
+                                  class: _vm.eye,
+                                  on: { click: _vm.showHidePassword }
+                                })
+                              ]
+                            )
+                          ]
+                        ),
                         _vm._v(" "),
-                        _vm._m(0),
-                        _vm._v(" "),
-                        _vm.has_error && _vm.errors.email
+                        _vm.has_error && _vm.errors.password
                           ? _c("p", { staticClass: "help is-danger" }, [
-                              _vm._v(_vm._s(_vm.errors.email))
+                              _vm._v(_vm._s(_vm.errors.password))
                             ])
                           : _vm._e()
                       ])
                     ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "field" }, [
-                  _c("div", { staticClass: "columns" }, [
-                    _c("div", { staticClass: "column is-10" }, [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "control has-icons-left has-icons-right"
-                        },
-                        [
-                          _vm.passwordOrText === "checkbox"
-                            ? _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.password,
-                                    expression: "password"
-                                  }
-                                ],
-                                staticClass: "input",
-                                class: { "is-danger": _vm.errors.password },
-                                attrs: {
-                                  placeholder: "Password",
-                                  type: "checkbox"
-                                },
-                                domProps: {
-                                  checked: Array.isArray(_vm.password)
-                                    ? _vm._i(_vm.password, null) > -1
-                                    : _vm.password
-                                },
-                                on: {
-                                  change: function($event) {
-                                    var $$a = _vm.password,
-                                      $$el = $event.target,
-                                      $$c = $$el.checked ? true : false
-                                    if (Array.isArray($$a)) {
-                                      var $$v = null,
-                                        $$i = _vm._i($$a, $$v)
-                                      if ($$el.checked) {
-                                        $$i < 0 &&
-                                          (_vm.password = $$a.concat([$$v]))
-                                      } else {
-                                        $$i > -1 &&
-                                          (_vm.password = $$a
-                                            .slice(0, $$i)
-                                            .concat($$a.slice($$i + 1)))
-                                      }
-                                    } else {
-                                      _vm.password = $$c
-                                    }
-                                  }
-                                }
-                              })
-                            : _vm.passwordOrText === "radio"
-                            ? _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.password,
-                                    expression: "password"
-                                  }
-                                ],
-                                staticClass: "input",
-                                class: { "is-danger": _vm.errors.password },
-                                attrs: {
-                                  placeholder: "Password",
-                                  type: "radio"
-                                },
-                                domProps: {
-                                  checked: _vm._q(_vm.password, null)
-                                },
-                                on: {
-                                  change: function($event) {
-                                    _vm.password = null
-                                  }
-                                }
-                              })
-                            : _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.password,
-                                    expression: "password"
-                                  }
-                                ],
-                                staticClass: "input",
-                                class: { "is-danger": _vm.errors.password },
-                                attrs: {
-                                  placeholder: "Password",
-                                  type: _vm.passwordOrText
-                                },
-                                domProps: { value: _vm.password },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.password = $event.target.value
-                                  }
-                                }
-                              }),
-                          _vm._v(" "),
-                          _vm._m(1),
-                          _vm._v(" "),
-                          _c(
-                            "span",
-                            { staticClass: "icon is-small is-right" },
-                            [
-                              _c("i", {
-                                staticClass: "fa show-pass",
-                                class: _vm.eye,
-                                on: { click: _vm.showHidePassword }
-                              })
-                            ]
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _vm.has_error && _vm.errors.password
-                        ? _c("p", { staticClass: "help is-danger" }, [
-                            _vm._v(_vm._s(_vm.errors.password))
-                          ])
-                        : _vm._e()
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _vm._m(2)
-              ]
-            )
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(2)
+                ]
+              )
+            ])
           ])
         ])
       ]),
@@ -35490,7 +35559,7 @@ var render = function() {
   return _c(
     "nav",
     {
-      staticClass: "navbar is-fixed-top",
+      staticClass: "navbar is-fixed-top site-header",
       attrs: { role: "navigation", "aria-label": "main navigation" }
     },
     [
@@ -35517,7 +35586,7 @@ var render = function() {
         "div",
         { staticClass: "navbar-menu", attrs: { id: "navbarBasicExample" } },
         [
-          _vm.$auth.check()
+          _vm.$auth.watch.loaded && _vm.$auth.check()
             ? _c(
                 "div",
                 { staticClass: "navbar-start" },
@@ -35527,7 +35596,7 @@ var render = function() {
                       "router-link",
                       {
                         key: key,
-                        staticClass: "navbar-item",
+                        staticClass: "navbar-item pages-links",
                         attrs: { to: { name: route.path }, exact: "" }
                       },
                       [_vm._v(" " + _vm._s(route.name) + " ")]
@@ -35562,7 +35631,7 @@ var render = function() {
               )
             : _vm._e(),
           _vm._v(" "),
-          !_vm.$auth.check()
+          _vm.$auth.watch.loaded && !_vm.$auth.check()
             ? _c("div", { staticClass: "navbar-end" }, [
                 _c("div", { staticClass: "navbar-item" }, [
                   _c(
@@ -35658,440 +35727,464 @@ var render = function() {
         ),
         _vm._v(" "),
         _c("section", { staticClass: "section column is-5" }, [
-          _c("div", { staticClass: "container" }, [
-            _vm.has_error && !_vm.success
-              ? _c("div", { staticClass: "notification is-danger" }, [
-                  _vm.error == "registration_validation_error"
-                    ? _c("p", [
-                        _vm._v(
-                          "\n                        Validation error (s), please see the message (s) below\n                    "
-                        )
-                      ])
-                    : _c("p", [
-                        _vm._v(
-                          "\n                        Error, unable to register at this time. If the problem persists, please contact an administrator\n                    "
-                        )
-                      ])
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            !_vm.success
-              ? _c(
-                  "form",
-                  {
-                    attrs: { autocomplete: "off", method: "post" },
-                    on: {
-                      submit: function($event) {
-                        $event.preventDefault()
-                        return _vm.register($event)
+          _c("div", { staticClass: "container card" }, [
+            _c("div", { staticClass: "card-content" }, [
+              _vm.has_error && !_vm.success
+                ? _c("div", { staticClass: "notification is-danger" }, [
+                    _vm.error == "registration_validation_error"
+                      ? _c("p", [
+                          _vm._v(
+                            "\n                            Validation error (s), please see the message (s) below\n                        "
+                          )
+                        ])
+                      : _c("p", [
+                          _vm._v(
+                            "\n                            Error, unable to register at this time. If the problem persists, please contact an administrator\n                        "
+                          )
+                        ])
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              !_vm.success
+                ? _c(
+                    "form",
+                    {
+                      attrs: { autocomplete: "off", method: "post" },
+                      on: {
+                        submit: function($event) {
+                          $event.preventDefault()
+                          return _vm.register($event)
+                        }
                       }
-                    }
-                  },
-                  [
-                    _c("div", { staticClass: "field" }, [
-                      _c("div", { staticClass: "columns" }, [
-                        _c("div", { staticClass: "column is-10" }, [
-                          _c("p", { staticClass: "control has-icons-left" }, [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.firstname,
-                                  expression: "firstname"
-                                }
-                              ],
-                              staticClass: "input",
-                              class: { "is-danger": _vm.errors.firstname },
-                              attrs: {
-                                type: "text",
-                                placeholder: "First name"
-                              },
-                              domProps: { value: _vm.firstname },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.firstname = $event.target.value
-                                }
-                              }
-                            })
-                          ]),
-                          _vm._v(" "),
-                          _vm.has_error && _vm.errors.firstname
-                            ? _c("p", { staticClass: "help is-danger" }, [
-                                _vm._v(_vm._s(_vm.errors.firstname))
-                              ])
-                            : _vm._e()
-                        ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "field" }, [
-                      _c("div", { staticClass: "columns" }, [
-                        _c("div", { staticClass: "column is-10" }, [
-                          _c("p", { staticClass: "control has-icons-left" }, [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.lastname,
-                                  expression: "lastname"
-                                }
-                              ],
-                              staticClass: "input",
-                              class: { "is-danger": _vm.errors.lastname },
-                              attrs: { type: "text", placeholder: "Last name" },
-                              domProps: { value: _vm.lastname },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.lastname = $event.target.value
-                                }
-                              }
-                            })
-                          ]),
-                          _vm._v(" "),
-                          _vm.has_error && _vm.errors.lastname
-                            ? _c("p", { staticClass: "help is-danger" }, [
-                                _vm._v(_vm._s(_vm.errors.lastname))
-                              ])
-                            : _vm._e()
-                        ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "field" }, [
-                      _c("div", { staticClass: "columns" }, [
-                        _c("div", { staticClass: "column is-10" }, [
-                          _c(
-                            "p",
-                            {
-                              staticClass:
-                                "control has-icons-left has-icons-right"
-                            },
-                            [
+                    },
+                    [
+                      _c("div", { staticClass: "field" }, [
+                        _c("div", { staticClass: "columns" }, [
+                          _c("div", { staticClass: "column is-10" }, [
+                            _c("p", { staticClass: "control has-icons-left" }, [
                               _c("input", {
                                 directives: [
                                   {
                                     name: "model",
                                     rawName: "v-model",
-                                    value: _vm.email,
-                                    expression: "email"
+                                    value: _vm.firstname,
+                                    expression: "firstname"
                                   }
                                 ],
                                 staticClass: "input",
-                                class: { "is-danger": _vm.errors.email },
-                                attrs: { type: "email", placeholder: "Email" },
-                                domProps: { value: _vm.email },
+                                class: { "is-danger": _vm.errors.firstname },
+                                attrs: {
+                                  type: "text",
+                                  placeholder: "First name"
+                                },
+                                domProps: { value: _vm.firstname },
                                 on: {
                                   input: function($event) {
                                     if ($event.target.composing) {
                                       return
                                     }
-                                    _vm.email = $event.target.value
+                                    _vm.firstname = $event.target.value
                                   }
                                 }
-                              }),
-                              _vm._v(" "),
-                              _vm._m(0)
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _vm.has_error && _vm.errors.email
-                            ? _c("p", { staticClass: "help is-danger" }, [
-                                _vm._v(_vm._s(_vm.errors.email))
-                              ])
-                            : _vm._e()
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _vm.has_error && _vm.errors.firstname
+                              ? _c("p", { staticClass: "help is-danger" }, [
+                                  _vm._v(_vm._s(_vm.errors.firstname))
+                                ])
+                              : _vm._e()
+                          ])
                         ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "field" }, [
-                      _c("div", { staticClass: "columns" }, [
-                        _c("div", { staticClass: "column is-10" }, [
-                          _c(
-                            "p",
-                            {
-                              staticClass:
-                                "control has-icons-left has-icons-right"
-                            },
-                            [
-                              _vm.passwordOrText === "checkbox"
-                                ? _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.password,
-                                        expression: "password"
-                                      }
-                                    ],
-                                    staticClass: "input",
-                                    class: { "is-danger": _vm.errors.password },
-                                    attrs: {
-                                      placeholder: "Password",
-                                      type: "checkbox"
-                                    },
-                                    domProps: {
-                                      checked: Array.isArray(_vm.password)
-                                        ? _vm._i(_vm.password, null) > -1
-                                        : _vm.password
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        var $$a = _vm.password,
-                                          $$el = $event.target,
-                                          $$c = $$el.checked ? true : false
-                                        if (Array.isArray($$a)) {
-                                          var $$v = null,
-                                            $$i = _vm._i($$a, $$v)
-                                          if ($$el.checked) {
-                                            $$i < 0 &&
-                                              (_vm.password = $$a.concat([$$v]))
-                                          } else {
-                                            $$i > -1 &&
-                                              (_vm.password = $$a
-                                                .slice(0, $$i)
-                                                .concat($$a.slice($$i + 1)))
-                                          }
-                                        } else {
-                                          _vm.password = $$c
-                                        }
-                                      }
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "field" }, [
+                        _c("div", { staticClass: "columns" }, [
+                          _c("div", { staticClass: "column is-10" }, [
+                            _c("p", { staticClass: "control has-icons-left" }, [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.lastname,
+                                    expression: "lastname"
+                                  }
+                                ],
+                                staticClass: "input",
+                                class: { "is-danger": _vm.errors.lastname },
+                                attrs: {
+                                  type: "text",
+                                  placeholder: "Last name"
+                                },
+                                domProps: { value: _vm.lastname },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
                                     }
-                                  })
-                                : _vm.passwordOrText === "radio"
-                                ? _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.password,
-                                        expression: "password"
-                                      }
-                                    ],
-                                    staticClass: "input",
-                                    class: { "is-danger": _vm.errors.password },
-                                    attrs: {
-                                      placeholder: "Password",
-                                      type: "radio"
-                                    },
-                                    domProps: {
-                                      checked: _vm._q(_vm.password, null)
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        _vm.password = null
-                                      }
-                                    }
-                                  })
-                                : _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.password,
-                                        expression: "password"
-                                      }
-                                    ],
-                                    staticClass: "input",
-                                    class: { "is-danger": _vm.errors.password },
-                                    attrs: {
-                                      placeholder: "Password",
-                                      type: _vm.passwordOrText
-                                    },
-                                    domProps: { value: _vm.password },
-                                    on: {
-                                      input: function($event) {
-                                        if ($event.target.composing) {
-                                          return
-                                        }
-                                        _vm.password = $event.target.value
-                                      }
-                                    }
-                                  }),
-                              _vm._v(" "),
-                              _vm._m(1),
-                              _vm._v(" "),
-                              _c(
-                                "span",
-                                { staticClass: "icon is-small is-right" },
-                                [
-                                  _c("i", {
-                                    staticClass: "fa show-pass",
-                                    class: _vm.passEye,
-                                    on: {
-                                      click: function($event) {
-                                        return _vm.showHidePassword("password")
-                                      }
-                                    }
-                                  })
-                                ]
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _vm.has_error && _vm.errors.password
-                            ? _c("p", { staticClass: "help is-danger" }, [
-                                _vm._v(_vm._s(_vm.errors.password))
-                              ])
-                            : _vm._e()
+                                    _vm.lastname = $event.target.value
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _vm.has_error && _vm.errors.lastname
+                              ? _c("p", { staticClass: "help is-danger" }, [
+                                  _vm._v(_vm._s(_vm.errors.lastname))
+                                ])
+                              : _vm._e()
+                          ])
                         ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "field" }, [
-                      _c("div", { staticClass: "columns" }, [
-                        _c("div", { staticClass: "column is-10" }, [
-                          _c(
-                            "p",
-                            {
-                              staticClass:
-                                "control has-icons-left has-icons-right"
-                            },
-                            [
-                              _vm.confpasswordOrText === "checkbox"
-                                ? _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.password_confirmation,
-                                        expression: "password_confirmation"
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "field" }, [
+                        _c("div", { staticClass: "columns" }, [
+                          _c("div", { staticClass: "column is-10" }, [
+                            _c(
+                              "p",
+                              {
+                                staticClass:
+                                  "control has-icons-left has-icons-right"
+                              },
+                              [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.email,
+                                      expression: "email"
+                                    }
+                                  ],
+                                  staticClass: "input",
+                                  class: { "is-danger": _vm.errors.email },
+                                  attrs: {
+                                    type: "email",
+                                    placeholder: "Email"
+                                  },
+                                  domProps: { value: _vm.email },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
                                       }
-                                    ],
-                                    staticClass: "input",
-                                    class: { "is-danger": _vm.errors.password },
-                                    attrs: {
-                                      placeholder: "Confirm password",
-                                      type: "checkbox"
-                                    },
-                                    domProps: {
-                                      checked: Array.isArray(
-                                        _vm.password_confirmation
-                                      )
-                                        ? _vm._i(
-                                            _vm.password_confirmation,
-                                            null
-                                          ) > -1
-                                        : _vm.password_confirmation
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        var $$a = _vm.password_confirmation,
-                                          $$el = $event.target,
-                                          $$c = $$el.checked ? true : false
-                                        if (Array.isArray($$a)) {
-                                          var $$v = null,
-                                            $$i = _vm._i($$a, $$v)
-                                          if ($$el.checked) {
-                                            $$i < 0 &&
-                                              (_vm.password_confirmation = $$a.concat(
-                                                [$$v]
-                                              ))
+                                      _vm.email = $event.target.value
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _vm._m(0)
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _vm.has_error && _vm.errors.email
+                              ? _c("p", { staticClass: "help is-danger" }, [
+                                  _vm._v(_vm._s(_vm.errors.email))
+                                ])
+                              : _vm._e()
+                          ])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "field" }, [
+                        _c("div", { staticClass: "columns" }, [
+                          _c("div", { staticClass: "column is-10" }, [
+                            _c(
+                              "p",
+                              {
+                                staticClass:
+                                  "control has-icons-left has-icons-right"
+                              },
+                              [
+                                _vm.passwordOrText === "checkbox"
+                                  ? _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.password,
+                                          expression: "password"
+                                        }
+                                      ],
+                                      staticClass: "input",
+                                      class: {
+                                        "is-danger": _vm.errors.password
+                                      },
+                                      attrs: {
+                                        placeholder: "Password",
+                                        type: "checkbox"
+                                      },
+                                      domProps: {
+                                        checked: Array.isArray(_vm.password)
+                                          ? _vm._i(_vm.password, null) > -1
+                                          : _vm.password
+                                      },
+                                      on: {
+                                        change: function($event) {
+                                          var $$a = _vm.password,
+                                            $$el = $event.target,
+                                            $$c = $$el.checked ? true : false
+                                          if (Array.isArray($$a)) {
+                                            var $$v = null,
+                                              $$i = _vm._i($$a, $$v)
+                                            if ($$el.checked) {
+                                              $$i < 0 &&
+                                                (_vm.password = $$a.concat([
+                                                  $$v
+                                                ]))
+                                            } else {
+                                              $$i > -1 &&
+                                                (_vm.password = $$a
+                                                  .slice(0, $$i)
+                                                  .concat($$a.slice($$i + 1)))
+                                            }
                                           } else {
-                                            $$i > -1 &&
-                                              (_vm.password_confirmation = $$a
-                                                .slice(0, $$i)
-                                                .concat($$a.slice($$i + 1)))
+                                            _vm.password = $$c
                                           }
-                                        } else {
-                                          _vm.password_confirmation = $$c
                                         }
                                       }
-                                    }
-                                  })
-                                : _vm.confpasswordOrText === "radio"
-                                ? _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.password_confirmation,
-                                        expression: "password_confirmation"
-                                      }
-                                    ],
-                                    staticClass: "input",
-                                    class: { "is-danger": _vm.errors.password },
-                                    attrs: {
-                                      placeholder: "Confirm password",
-                                      type: "radio"
-                                    },
-                                    domProps: {
-                                      checked: _vm._q(
-                                        _vm.password_confirmation,
-                                        null
-                                      )
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        _vm.password_confirmation = null
-                                      }
-                                    }
-                                  })
-                                : _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.password_confirmation,
-                                        expression: "password_confirmation"
-                                      }
-                                    ],
-                                    staticClass: "input",
-                                    class: { "is-danger": _vm.errors.password },
-                                    attrs: {
-                                      placeholder: "Confirm password",
-                                      type: _vm.confpasswordOrText
-                                    },
-                                    domProps: {
-                                      value: _vm.password_confirmation
-                                    },
-                                    on: {
-                                      input: function($event) {
-                                        if ($event.target.composing) {
-                                          return
+                                    })
+                                  : _vm.passwordOrText === "radio"
+                                  ? _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.password,
+                                          expression: "password"
                                         }
-                                        _vm.password_confirmation =
-                                          $event.target.value
+                                      ],
+                                      staticClass: "input",
+                                      class: {
+                                        "is-danger": _vm.errors.password
+                                      },
+                                      attrs: {
+                                        placeholder: "Password",
+                                        type: "radio"
+                                      },
+                                      domProps: {
+                                        checked: _vm._q(_vm.password, null)
+                                      },
+                                      on: {
+                                        change: function($event) {
+                                          _vm.password = null
+                                        }
                                       }
-                                    }
-                                  }),
-                              _vm._v(" "),
-                              _vm._m(2),
-                              _vm._v(" "),
-                              _c(
-                                "span",
-                                { staticClass: "icon is-small is-right" },
-                                [
-                                  _c("i", {
-                                    staticClass: "fa show-pass",
-                                    class: _vm.confPassEye,
-                                    on: {
-                                      click: function($event) {
-                                        return _vm.showHidePassword(
-                                          "confirmPassword"
+                                    })
+                                  : _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.password,
+                                          expression: "password"
+                                        }
+                                      ],
+                                      staticClass: "input",
+                                      class: {
+                                        "is-danger": _vm.errors.password
+                                      },
+                                      attrs: {
+                                        placeholder: "Password",
+                                        type: _vm.passwordOrText
+                                      },
+                                      domProps: { value: _vm.password },
+                                      on: {
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.password = $event.target.value
+                                        }
+                                      }
+                                    }),
+                                _vm._v(" "),
+                                _vm._m(1),
+                                _vm._v(" "),
+                                _c(
+                                  "span",
+                                  { staticClass: "icon is-small is-right" },
+                                  [
+                                    _c("i", {
+                                      staticClass: "fa show-pass",
+                                      class: _vm.passEye,
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.showHidePassword(
+                                            "password"
+                                          )
+                                        }
+                                      }
+                                    })
+                                  ]
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _vm.has_error && _vm.errors.password
+                              ? _c("p", { staticClass: "help is-danger" }, [
+                                  _vm._v(_vm._s(_vm.errors.password))
+                                ])
+                              : _vm._e()
+                          ])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "field" }, [
+                        _c("div", { staticClass: "columns" }, [
+                          _c("div", { staticClass: "column is-10" }, [
+                            _c(
+                              "p",
+                              {
+                                staticClass:
+                                  "control has-icons-left has-icons-right"
+                              },
+                              [
+                                _vm.confpasswordOrText === "checkbox"
+                                  ? _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.password_confirmation,
+                                          expression: "password_confirmation"
+                                        }
+                                      ],
+                                      staticClass: "input",
+                                      class: {
+                                        "is-danger": _vm.errors.password
+                                      },
+                                      attrs: {
+                                        placeholder: "Confirm password",
+                                        type: "checkbox"
+                                      },
+                                      domProps: {
+                                        checked: Array.isArray(
+                                          _vm.password_confirmation
                                         )
+                                          ? _vm._i(
+                                              _vm.password_confirmation,
+                                              null
+                                            ) > -1
+                                          : _vm.password_confirmation
+                                      },
+                                      on: {
+                                        change: function($event) {
+                                          var $$a = _vm.password_confirmation,
+                                            $$el = $event.target,
+                                            $$c = $$el.checked ? true : false
+                                          if (Array.isArray($$a)) {
+                                            var $$v = null,
+                                              $$i = _vm._i($$a, $$v)
+                                            if ($$el.checked) {
+                                              $$i < 0 &&
+                                                (_vm.password_confirmation = $$a.concat(
+                                                  [$$v]
+                                                ))
+                                            } else {
+                                              $$i > -1 &&
+                                                (_vm.password_confirmation = $$a
+                                                  .slice(0, $$i)
+                                                  .concat($$a.slice($$i + 1)))
+                                            }
+                                          } else {
+                                            _vm.password_confirmation = $$c
+                                          }
+                                        }
                                       }
-                                    }
-                                  })
-                                ]
-                              )
-                            ]
-                          )
+                                    })
+                                  : _vm.confpasswordOrText === "radio"
+                                  ? _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.password_confirmation,
+                                          expression: "password_confirmation"
+                                        }
+                                      ],
+                                      staticClass: "input",
+                                      class: {
+                                        "is-danger": _vm.errors.password
+                                      },
+                                      attrs: {
+                                        placeholder: "Confirm password",
+                                        type: "radio"
+                                      },
+                                      domProps: {
+                                        checked: _vm._q(
+                                          _vm.password_confirmation,
+                                          null
+                                        )
+                                      },
+                                      on: {
+                                        change: function($event) {
+                                          _vm.password_confirmation = null
+                                        }
+                                      }
+                                    })
+                                  : _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.password_confirmation,
+                                          expression: "password_confirmation"
+                                        }
+                                      ],
+                                      staticClass: "input",
+                                      class: {
+                                        "is-danger": _vm.errors.password
+                                      },
+                                      attrs: {
+                                        placeholder: "Confirm password",
+                                        type: _vm.confpasswordOrText
+                                      },
+                                      domProps: {
+                                        value: _vm.password_confirmation
+                                      },
+                                      on: {
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.password_confirmation =
+                                            $event.target.value
+                                        }
+                                      }
+                                    }),
+                                _vm._v(" "),
+                                _vm._m(2),
+                                _vm._v(" "),
+                                _c(
+                                  "span",
+                                  { staticClass: "icon is-small is-right" },
+                                  [
+                                    _c("i", {
+                                      staticClass: "fa show-pass",
+                                      class: _vm.confPassEye,
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.showHidePassword(
+                                            "confirmPassword"
+                                          )
+                                        }
+                                      }
+                                    })
+                                  ]
+                                )
+                              ]
+                            )
+                          ])
                         ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(3)
-                  ]
-                )
-              : _vm._e()
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(3)
+                    ]
+                  )
+                : _vm._e()
+            ])
           ])
         ])
       ]),
@@ -51785,15 +51878,17 @@ try {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _About_vue_vue_type_template_id_fb05e49c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./About.vue?vue&type=template&id=fb05e49c& */ "./resources/js/components/About.vue?vue&type=template&id=fb05e49c&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _About_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./About.vue?vue&type=script&lang=js& */ "./resources/js/components/About.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
-var script = {}
+
+
 
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
-  script,
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _About_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _About_vue_vue_type_template_id_fb05e49c___WEBPACK_IMPORTED_MODULE_0__["render"],
   _About_vue_vue_type_template_id_fb05e49c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
@@ -51807,6 +51902,20 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 if (false) { var api; }
 component.options.__file = "resources/js/components/About.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/About.vue?vue&type=script&lang=js&":
+/*!********************************************************************!*\
+  !*** ./resources/js/components/About.vue?vue&type=script&lang=js& ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_About_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./About.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/About.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_About_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 

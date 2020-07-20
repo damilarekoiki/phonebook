@@ -1,10 +1,28 @@
 <template>
     <section class="section">
-        <div class="container">
-            <h1 class="title">Section</h1>
-            <h2 class="subtitle">
-                A simple container to divide your page into <strong>sections</strong>, like the one you're currently reading
-            </h2>
+        <div class="container columns">
+            <div class="card is-offset-3 is-4 column">
+                <div class="card-image">
+                    <figure class="image">
+                    <img :src="'./assets/image/dammy.jpg'" alt="Placeholder image" style="width:100%;">
+                    </figure>
+                </div>
+                <div class="card-content">
+
+                    <div class="content" style="text-align: justify;">
+                        Hi! My name is Damilare Koiki. I'm a full-stack developer. 
+                        I built this site with Laravel and Vue.js
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 </template>
+
+<script>
+export default {
+    mounted() {
+        this.$emit('dataStiilBeingFetched', false);
+    }
+}
+</script>

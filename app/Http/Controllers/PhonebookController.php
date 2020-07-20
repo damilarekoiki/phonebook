@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\PhonebookRequest;
 use App\Phonebook;
 use Illuminate\Http\Request;
@@ -21,7 +22,7 @@ class PhonebookController extends Controller
     public function fetchUserPhonebook()
     {
         # code...
-        return Phonebook::orderBy('friend_name', 'ASC')->get();
+        return Phonebook::where('user_id',(Auth::user()->id))->orderBy('friend_name', 'ASC')->get();
     }
 
     public function fetchPhonebookDetails(Request $request)
@@ -37,10 +38,13 @@ class PhonebookController extends Controller
         // return $request;
         $search=$request->search;
 
-        return Phonebook::query()
-        ->where('friend_name', 'LIKE', "%{$search}%") 
-        ->orWhere('friend_phone_number', 'LIKE', "%{$search}%") 
-        ->orWhere('friend_email', 'LIKE', "%{$search}%")
+        return Phonebook::query()->where('user_id', (Auth::user()->id))
+        ->where(function($q) use ($search){
+            $q->where('friend_name', 'LIKE', "%{$search}%") 
+            ->orWhere('friend_phone_number', 'LIKE', "%{$search}%") 
+            ->orWhere('friend_email', 'LIKE', "%{$search}%")
+            ->orderBy('friend_name', 'ASC');
+        })
         ->orderBy('friend_name', 'ASC')
         ->get();
     }
@@ -66,7 +70,7 @@ class PhonebookController extends Controller
         //
         $phonebook = new Phonebook;
 
-        $phonebook->user_id = 1;
+        $phonebook->user_id = (Auth::user()->id);
         $phonebook->friend_name = $request->friend_name;
         $phonebook->friend_phone_number = $request->friend_phone_number;
         $phonebook->friend_email = $request->friend_email;

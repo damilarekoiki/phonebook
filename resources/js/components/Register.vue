@@ -6,94 +6,95 @@
                 <TopIllustration />
             </section>
             <section class="section column is-5">
-                <div class="container">
-
-                    <div class="notification is-danger" v-if="has_error && !success">
-                        <p v-if="error == 'registration_validation_error'">
-                            Validation error (s), please see the message (s) below
-                        </p>
-                        <p v-else>
-                            Error, unable to register at this time. If the problem persists, please contact an administrator
-                        </p>
-                    </div>
-
-                    <form autocomplete="off" @submit.prevent="register" v-if="!success" method="post">
-
-                        <div class="field">
-                            <div class="columns">
-                                <div class="column is-10">
-                                    <p class="control has-icons-left">
-                                        <input class="input" type="text" placeholder="First name" v-model="firstname" :class="{'is-danger':errors.firstname}">
-                                    </p>
-                                    <p class="help is-danger" v-if="has_error && errors.firstname">{{ errors.firstname }}</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="field">
-                            <div class="columns">
-                                <div class="column is-10">
-                                    <p class="control has-icons-left">
-                                        <input class="input" type="text" placeholder="Last name" v-model="lastname" :class="{'is-danger':errors.lastname}">
-                                    </p>
-                                    <p class="help is-danger" v-if="has_error && errors.lastname">{{ errors.lastname }}</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="field">
-                            <div class="columns">
-                                <div class="column is-10">
-                                    <p class="control has-icons-left has-icons-right">
-                                        <input class="input" type="email" placeholder="Email" v-model="email" :class="{'is-danger':errors.email}">
-                                        <span class="icon is-small is-left">
-                                        <i class="fa fa-envelope"></i>
-                                        </span>
-                                    </p>
-                                    <p class="help is-danger" v-if="has_error && errors.email">{{ errors.email }}</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="field">
-                            <div class="columns">
-                                <div class="column is-10">
-                                    <p class="control has-icons-left has-icons-right">
-                                        <input class="input" :type="passwordOrText" placeholder="Password" v-model="password" :class="{'is-danger':errors.password}">
-                                        <span class="icon is-small is-left">
-                                            <i class="fa fa-lock"></i>
-                                        </span>
-                                        <span class="icon is-small is-right">
-                                            <i class="fa show-pass" :class="passEye" @click="showHidePassword('password')"></i>
-                                        </span>
-                                    </p>
-                                    <p class="help is-danger" v-if="has_error && errors.password">{{ errors.password }}</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="field">
-                            <div class="columns">
-                                <div class="column is-10">
-                                    <p class="control has-icons-left has-icons-right">
-                                        <input class="input" :type="confpasswordOrText" placeholder="Confirm password" v-model="password_confirmation" :class="{'is-danger':errors.password}">
-                                        <span class="icon is-small is-left">
-                                            <i class="fa fa-lock"></i>
-                                        </span>
-                                        <span class="icon is-small is-right">
-                                            <i class="fa show-pass" :class="confPassEye" @click="showHidePassword('confirmPassword')"></i>
-                                        </span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="field">
-                            <p class="control">
-                                <button class="button is-link">Register</button>
+                <div class="container card">
+                    <div class="card-content">
+                        <div class="notification is-danger" v-if="has_error && !success">
+                            <p v-if="error == 'registration_validation_error'">
+                                Validation error (s), please see the message (s) below
+                            </p>
+                            <p v-else>
+                                Error, unable to register at this time. If the problem persists, please contact an administrator
                             </p>
                         </div>
-                    </form>
+
+                        <form autocomplete="off" @submit.prevent="register" v-if="!success" method="post">
+
+                            <div class="field">
+                                <div class="columns">
+                                    <div class="column is-10">
+                                        <p class="control has-icons-left">
+                                            <input class="input" type="text" placeholder="First name" v-model="firstname" :class="{'is-danger':errors.firstname}">
+                                        </p>
+                                        <p class="help is-danger" v-if="has_error && errors.firstname">{{ errors.firstname }}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <div class="columns">
+                                    <div class="column is-10">
+                                        <p class="control has-icons-left">
+                                            <input class="input" type="text" placeholder="Last name" v-model="lastname" :class="{'is-danger':errors.lastname}">
+                                        </p>
+                                        <p class="help is-danger" v-if="has_error && errors.lastname">{{ errors.lastname }}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <div class="columns">
+                                    <div class="column is-10">
+                                        <p class="control has-icons-left has-icons-right">
+                                            <input class="input" type="email" placeholder="Email" v-model="email" :class="{'is-danger':errors.email}">
+                                            <span class="icon is-small is-left">
+                                            <i class="fa fa-envelope"></i>
+                                            </span>
+                                        </p>
+                                        <p class="help is-danger" v-if="has_error && errors.email">{{ errors.email }}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <div class="columns">
+                                    <div class="column is-10">
+                                        <p class="control has-icons-left has-icons-right">
+                                            <input class="input" :type="passwordOrText" placeholder="Password" v-model="password" :class="{'is-danger':errors.password}">
+                                            <span class="icon is-small is-left">
+                                                <i class="fa fa-lock"></i>
+                                            </span>
+                                            <span class="icon is-small is-right">
+                                                <i class="fa show-pass" :class="passEye" @click="showHidePassword('password')"></i>
+                                            </span>
+                                        </p>
+                                        <p class="help is-danger" v-if="has_error && errors.password">{{ errors.password }}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <div class="columns">
+                                    <div class="column is-10">
+                                        <p class="control has-icons-left has-icons-right">
+                                            <input class="input" :type="confpasswordOrText" placeholder="Confirm password" v-model="password_confirmation" :class="{'is-danger':errors.password}">
+                                            <span class="icon is-small is-left">
+                                                <i class="fa fa-lock"></i>
+                                            </span>
+                                            <span class="icon is-small is-right">
+                                                <i class="fa show-pass" :class="confPassEye" @click="showHidePassword('confirmPassword')"></i>
+                                            </span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <p class="control">
+                                    <button class="button is-link">Register</button>
+                                </p>
+                            </div>
+                        </form>
+                    </div>
 
                 </div>
             </section>

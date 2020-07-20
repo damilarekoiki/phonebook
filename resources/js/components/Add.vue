@@ -81,12 +81,13 @@
                     this.$parent.tempList=response.data; // save original list. Display it when nothng is in search box
                     this.$Progress.finish() //  Loader progress bar
                     this.close();
+                    this.list={} // Empty all the fields, work of v-model
+
                 }).catch((error)=>{
                     this.$Progress.fail() //  Loader progress bar
                     this.errors = error.response.data.errors;
                 });
 
-                this.list={} // Empty all the fields, work of v-model 
 
             }
         }

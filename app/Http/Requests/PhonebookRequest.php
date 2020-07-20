@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -25,7 +26,7 @@ class PhonebookRequest extends FormRequest
      */
     public function rules(Request $request)
     {
-        $user_id=1;
+        $user_id=(Auth::user()->id);
         $friend_email=$request->friend_email;
         return [
             //

@@ -121,10 +121,13 @@
                 this.list=response.data
                 this.tempList=this.list; // save original list. Display it when nothng is in search box
                 this.stillFetchingPhonebook=false
-                this.$emit('dataStiilBeingFetched', false)
+                this.$emit('dataStiilBeingFetched', false) // To control when footer will be displayed
                 
             }).catch((error) => {
+                console.log(error)
                 this.errors = error.response.data.errors;
+                this.stillFetchingPhonebook=false
+                this.$emit('dataStiilBeingFetched', false) // To control when footer will be displayed
             })
         },
         methods: {

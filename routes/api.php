@@ -35,7 +35,6 @@
 
         Route::post('fetchUserPhonebook', 'PhonebookController@fetchUserPhonebook');
         Route::resource('phonebook_save', 'PhonebookController');
-        Route::post('fetchUserPhonebook', 'PhonebookController@fetchUserPhonebook');
         Route::post('fetchPhonebookDetails', 'PhonebookController@fetchPhonebookDetails');
 
         Route::post("search", "PhonebookController@search");

@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+    <nav class="navbar is-fixed-top site-header" role="navigation" aria-label="main navigation">
 
         <div class="navbar-brand">
 
@@ -16,9 +16,9 @@
 
         <!-- LOGGED IN USER -->
         <div id="navbarBasicExample" class="navbar-menu">
-            <div class="navbar-start" v-if="$auth.check()">
+            <div class="navbar-start" v-if="$auth.watch.loaded && $auth.check()">
                 <!-- Home About Route Links -->
-                <router-link v-for="(route, key) in routes.user"  :to="{name: route.path}" :key="key" class="navbar-item" exact> {{route.name}} </router-link>
+                <router-link v-for="(route, key) in routes.user"  :to="{name: route.path}" :key="key" class="navbar-item pages-links" exact> {{route.name}} </router-link>
             
                 <!-- Logout Link -->
                 <div class="navbar-item has-dropdown is-hoverable">
@@ -34,7 +34,7 @@
             </div>
 
             <!-- NOT LOGGED IN -->
-            <div class="navbar-end" v-if="!$auth.check()">
+            <div class="navbar-end" v-if="$auth.watch.loaded && !$auth.check()">
                 <div class="navbar-item">
                     <div class="buttons">
                         <router-link v-for="(route, key) in routes.unlogged"  :to="{name: route.path}" :key="key" class="button" :class="{'is-light': key==1}" exact> {{route.name}} </router-link>
@@ -75,7 +75,7 @@
                             path: "about"
                         }
                     ]
-                }
+                },
             }
         }
     }
@@ -87,7 +87,16 @@
         color: #3273dc
     }
 
-    .navbar{
-        /* background: grey; */
+    .pages-links{
+        color:white
     }
+
+    .navbar-link:hover{
+        color: #3273dc
+    }
+
+    .site-header{
+        background: #3273dc;
+    }
+    
 </style>
